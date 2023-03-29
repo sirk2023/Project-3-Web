@@ -1,6 +1,7 @@
 </div>
 </body>
-    <footer>
+<div>
+    <footer class="footer">
     <p>&copy; 2023 HDD Destruction. All Rights Reserved.</p>
     <nav>
         <ul>
@@ -16,5 +17,5 @@
         <li><a href="#">Instagram</a></li>
     </ul>
     </footer>
-
+</div>
 </html>

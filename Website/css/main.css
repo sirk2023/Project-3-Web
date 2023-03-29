@@ -1,0 +1,57 @@
+.footer {
+    background-color: #f5f5f5;
+    padding: 5px;
+    text-align: center;
+
+    bottom: 0;
+    width: 100%;
+
+}
+
+.navbar-wrapper {
+    background-color: rgb(0, 0, 0);
+    margin: 0;
+}
+
+.margin-control {
+    margin: 0;
+}
+
+.login-form {
+    width: 450px;
+    height: 620px;
+    margin: auto;
+    border-radius: 3px;
+}
+
+.signup-form {
+    width: 450px;
+    height: 620px;
+    margin: auto;
+    border-radius: 3px;
+}
+
+.left-panel {
+    float: left;
+    width: 50%;
+    height: 100vh;
+    /* set the height to the full viewport height */
+    background-color: #230dc6;
+    /* change this to your desired background color */
+}
+
+.right-panel {
+    float: left;
+    width: 50%;
+    height: 100vh;
+    /* set the height to the full viewport height */
+    background-color: #bf2121;
+    /* change this to your desired background color */
+}
+
+.index-intro {
+    width: 100%;
+    text-align: center;
+
+
+}
