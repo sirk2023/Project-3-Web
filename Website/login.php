@@ -3,11 +3,11 @@
 ?>
         <section class="login-form">
             <h1 class=signup-label>Log In</h1>
-            <form class="form-horizontal" action="api/login.inc.php">
+            <form class="form-horizontal" action="api/login.inc.php" method="POST">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="uid">Username:</label>
+                    <label class="control-label col-sm-2" for="email">Email:</label>
                     <div class="col-sm-10">
-                        <input type="text" name="uid" class="form-control" id="uid" placeholder="Enter email">
+                        <input type="text" name="email" class="form-control" id="email" placeholder="Enter email">
                     </div>
                 </div>
                 <div class="form-group">

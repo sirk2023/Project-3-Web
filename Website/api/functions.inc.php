@@ -43,14 +43,14 @@ function pwdMatch($pwd, $pwdRepeat) {
     }
     return $result;
 }
-function uidExists($conn, $uid, $email) {
-    $sql = "SELECT * FROM user_client WHERE client_uid = :uid OR client_email = :email";
+function uidExists($conn, $email) {
+    $sql = "SELECT * FROM user_client WHERE client_email = :email";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         header("location: ../signup.php?error=statementFailed");
         exit();
     }
-    $stmt->execute(array(':uid'=>$uid, ':email'=>$email));
+    $stmt->execute(array(':email'=>$email));
     $resultData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if($resultData) {
@@ -88,12 +88,11 @@ function emptyInputLogin($uid, $pwd) {
     return $result;
 }
 
-function loginUser($conn, $uid, $pwd) {
-    $uidExists = uidExists($conn, $uid, $uid);
-
+function loginUser($conn, $email, $pwd) {
+    $uidExists = uidExists($conn, $email);
     if ($uidExists === false) {
         header("location: ../login.php?error=wrongLogin");
-    exit();
+        exit();
     }
     $pwdHashed = $uidExists["client_pass"];
     $checkPwd = password_verify($pwd, $pwdHashed);
