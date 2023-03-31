@@ -37,7 +37,7 @@ CREATE TABLE `user_staff` (
   `staff_id` 		int(11)			AUTO_INCREMENT NOT NULL,
   `staff_name` 		varchar(45)		DEFAULT NULL,
   `staff_email`		varchar(45) 	DEFAULT NULL,
-  `staff_pass` 		varchar(45) 	DEFAULT NULL,
+  `staff_pass` 		varchar(100) 	DEFAULT NULL,
   PRIMARY KEY (`staff_id`)
 );
 INSERT INTO `user_staff` VALUES
@@ -53,7 +53,7 @@ CREATE TABLE `user_client` (
   `client_name` 	varchar(45)		DEFAULT NULL,
   `client_email` 	varchar(45) 	DEFAULT NULL,
   `client_uid` 		varchar(45) 	DEFAULT NULL,
-  `client_pass` 	varchar(45) 	DEFAULT NULL,
+  `client_pass` 	varchar(100) 	DEFAULT NULL,
   PRIMARY KEY (`client_id`)
 );
 INSERT INTO `user_client` VALUES
