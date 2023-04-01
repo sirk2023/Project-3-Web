@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,17 +31,18 @@
                     <li><a href="#">Page 3</a></li>
                     <li><a href="#">Page 4</a></li>
                 </ul>
-                <?php if (isset($_SESSION["useruid"])) { ?>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Profile Page</a></li>
-                            <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                        </ul>
-                    <?php } else { ?>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                            <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        </ul>
-                    <?php } ?>
+                <?php if (!isset($_SESSION["useremail"])) {
+                        echo '<ul class="nav navbar-nav navbar-right">';
+                            echo '<li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>';
+                            echo '<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>';
+                        echo '</ul>';
+                        
+                    }else  { 
+                        echo '<ul class="nav navbar-nav navbar-right">';
+                            echo '<li><a href="signup.php"><span class="glyphicon glyphicon-user"></span>Profile</a></li>';
+                            echo '<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span>Log Out</a></li>';
+                        echo '</ul>';
+                    } ?> 
             </div>
         </nav>
         </div>

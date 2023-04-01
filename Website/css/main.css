@@ -49,6 +49,24 @@
     /* change this to your desired background color */
 }
 
+.profile-left-panel {
+    float: left;
+    width: 50%;
+    height: 100vh;
+    /* set the height to the full viewport height */
+    background-color: #f6ff00;
+    /* change this to your desired background color */
+}
+
+.profile-right-panel {
+    float: left;
+    width: 50%;
+    height: 100vh;
+    /* set the height to the full viewport height */
+    background-color: #21bf24;
+    /* change this to your desired background color */
+}
+
 .index-intro {
     width: 100%;
     text-align: center;
