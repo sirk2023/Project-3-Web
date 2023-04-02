@@ -106,6 +106,7 @@ function loginUser($conn, $email, $pwd) {
         $_SESSION["userid"] = $uidExists["client_id"];
         $_SESSION["useruid"] = $uidExists["client_uid"];
         $_SESSION["useremail"] = $uidExists["client_email"];
+        $_SESSION["username"] = $uidExists["client_name"];
         header("location: ../profile.php");
         exit();
     }
