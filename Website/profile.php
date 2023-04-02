@@ -2,22 +2,34 @@
     include_once 'header.php';
 ?>
 
-        <section class="index-intro">
-        <h1>Welcome! <?php
-                echo $_SESSION['username']; 
-                ?></h1>
-            <p>Your ID is: <?php
-                echo $_SESSION['userid']; 
-                ?><br> Your Username is: <?php
-                echo $_SESSION['useruid']; 
-                ?><br> Your Email is: <?php
-                echo $_SESSION['useremail']; 
-                ?><br> You Logged in succesfully!
-            </p>
-        </section>
+        
         <section class="index-catagories">
             <div class="profile-left-panel">
-                <div class="modal fade" id="myModal" role="dialog">
+                <!--Side Panel navbar-->
+                <div class="sidenav">
+                    <a href="#">Link</a>
+                    <a href="#">Link</a>
+                    <a href="#">Link</a>
+                    <a href="#">Link</a>
+                    <a href="#">Link</a>
+                </div>
+               
+            </div>
+            <div class="profile-right-panel">
+                <div class="index-intro">
+                    <h1>Welcome! <?php
+                        echo $_SESSION['username']; 
+                    ?></h1>
+                    <p>Your ID is: <?php
+                        echo $_SESSION['userid']; 
+                    ?><br> Your Username is: <?php
+                        echo $_SESSION['useruid']; 
+                    ?><br> Your Email is: <?php
+                        echo $_SESSION['useremail']; 
+                    ?><br> You Logged in succesfully!
+                    </p>
+                </div>
+            <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
                         <!-- Modal content-->
                         <div class="modal-content">
@@ -36,10 +48,7 @@
                         </div>
                     </div>
                 </div>
-               <button id="addJob">Request Job</button>
-            </div>
-            <div class="profile-right-panel">
-                <!-- content for right panel goes here -->
+               <button id="addToken">Request Job</button>
             </div>
         </section>
 

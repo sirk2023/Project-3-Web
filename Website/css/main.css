@@ -51,16 +51,16 @@
 
 .profile-left-panel {
     float: left;
-    width: 50%;
+    width: 20%;
     height: 100vh;
     /* set the height to the full viewport height */
-    background-color: #f6ff00;
+    background-color: #222221;
     /* change this to your desired background color */
 }
 
 .profile-right-panel {
     float: left;
-    width: 50%;
+    width: 80%;
     height: 100vh;
     /* set the height to the full viewport height */
     background-color: #21bf24;
@@ -73,3 +73,22 @@
 
 
 }
+/* Side navigation links */
+.sidenav a {
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color on hover */
+  .sidenav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Style the content */
+  .content {
+    margin-left: 200px;
+    padding-left: 20px;
+  }

@@ -183,7 +183,7 @@ var modalTable = function () {
 		'</td>'+
 	'</tr>';
 	var htmlButtons = '<button type="button" class="btn btn-default" data-dismiss="modal"' +
-		'id="addWallet">Add Token</button>' +
+		'id="addJob">Request Destruction</button>' +
 		'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
 	$("#contents").html(htmlStr);
 	$("#modalFooter").html(htmlButtons);
