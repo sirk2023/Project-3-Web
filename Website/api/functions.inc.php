@@ -61,15 +61,17 @@ function uidExists($conn, $email) {
 }
 
 function createUser($conn, $name, $email, $uid, $pwd) {
-    $sql = "INSERT INTO user_client (client_name, client_email, client_uid, client_pass) VALUES (:name, :email, :uid, :pwd)";
+    $sql = "INSERT INTO user_client (client_name, client_email, client_uid, client_role, client_pass) VALUES (:name, :email, :uid, :role, :pwd)";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         header("location: ../signup.php?error=statementFailed");
         exit();
     }
+    // Set default role to client
+    $role = "Client";
     // Hash the password into the Database 
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-    $stmt->execute(array(':name'=>$name, ':email'=>$email, ':uid'=>$uid, ':pwd'=>$hashedPwd));
+    $stmt->execute(array(':name'=>$name, ':email'=>$email, ':uid'=>$uid, ':role'=>$role, ':pwd'=>$hashedPwd));
     if ($stmt->rowCount() == 0) {
         header("location: ../signup.php?error=insertFailed");
         exit();
