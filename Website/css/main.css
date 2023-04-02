@@ -73,22 +73,23 @@
 
 
 }
+
 /* Side navigation links */
 .sidenav a {
     color: white;
     padding: 16px;
     text-decoration: none;
     display: block;
-  }
-  
-  /* Change color on hover */
-  .sidenav a:hover {
+}
+
+/* Change color on hover */
+.sidenav a:hover {
     background-color: #ddd;
     color: black;
-  }
-  
-  /* Style the content */
-  .content {
+}
+
+/* Style the content */
+.content {
     margin-left: 200px;
     padding-left: 20px;
-  }
+}

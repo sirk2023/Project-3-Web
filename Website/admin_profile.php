@@ -13,11 +13,10 @@
                     <a href="#">Link</a>
                     <a href="#">Link</a>
                 </div>
-               
             </div>
             <div class="profile-right-panel">
                 <div class="index-intro">
-                    <h1>Welcome! <?php
+                    <h1>Welcome Admin <?php
                         echo $_SESSION['username']; 
                     ?></h1>
                     <p>Your ID is: <?php
@@ -26,7 +25,7 @@
                         echo $_SESSION['useruid']; 
                     ?><br> Your Email is: <?php
                         echo $_SESSION['useremail']; 
-                    ?><br> You Logged in succesfully!
+                    ?><br> You Logged in succesfully! 
                     </p>
                 </div>
             <div class="modal fade" id="myModal" role="dialog">
@@ -48,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-               <button id="addToken">Request Job</button>
+                <button id="addToken">Request Job</button>
             </div>
         </section>
 

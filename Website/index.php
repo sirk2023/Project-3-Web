@@ -4,7 +4,7 @@
 
         <section class="index-intro">
             <h1>This is an Introduction</h1>
-            <p>Here is an important stuff that the company does</p>
+            <p>Here is an important stuff that the company does, This is public area</p>
         </section>
         <section class="index-catagories">
             <div class="left-panel">

@@ -109,6 +109,21 @@ function loginUser($conn, $email, $pwd) {
         $_SESSION["useruid"] = $uidExists["client_uid"];
         $_SESSION["useremail"] = $uidExists["client_email"];
         $_SESSION["username"] = $uidExists["client_name"];
+        $_SESSION["userstatus"] = $uidExists["client_role"];
+
+         //Check user role
+        $userRole = $uidExists["client_role"];
+        if ($userRole === "Client") {
+            header("location: ../client_profile.php");
+            
+            exit();
+        } else if ($userRole === "Admin") {
+            header("location: ../admin_profile.php");
+            exit();
+        } else {
+            header("location: ../login.php?error=wrongLogin");
+            exit();
+        }
         header("location: ../profile.php");
         exit();
     }
@@ -120,30 +135,29 @@ function loginUser($conn, $email, $pwd) {
 // Get all Users
 
 // ---------------- Jobs ----------------
-function getJobs() {
-	$query = "SELECT * FROM jobs ORDER BY job_id";
-	try {
-	global $conn;
-		$jobs = $conn->query($query);  
-		$jobs = $jobs->fetchAll(PDO::FETCH_ASSOC);
-		header("Content-Type: application/json", true);
-		echo '{"jobs": ' . json_encode($jobs) . '}';
-	} catch(PDOException $e) {
-		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
-	}
-}
+//function getJobs() {
+	//$query = "SELECT * FROM jobs ORDER BY job_id";
+	//try {
+	//global $conn;
+		//$jobs = $conn->query($query);  
+		//$jobs = $jobs->fetchAll(PDO::FETCH_ASSOC);
+		//header("Content-Type: application/json", true);
+		//echo '{"jobs": ' . json_encode($jobs) . '}';
+	//} catch(PDOException $e) {
+		//echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+	//}
+//}
 // Get job by ID
-function getJob($id) {
-	$query = "SELECT * FROM jobs WHERE job_id = '$id'";
-    try {
-		global $conn;
-		$jobs = $db->query($query);  
-		$job = $jobs->fetch(PDO::FETCH_ASSOC);
-        header("Content-Type: application/json", true);
-        echo json_encode($job);
-    } catch(PDOException $e) {
-        echo '{"error":{"text":'. $e->getMessage() .'}}';
-    }
-}
-?>
+//function getJob($id) {
+	//$query = "SELECT * FROM jobs WHERE job_id = '$id'";
+    //try {
+		//global $conn;
+		//$jobs = $db->query($query);  
+		//$job = $jobs->fetch(PDO::FETCH_ASSOC);
+        //header("Content-Type: application/json", true);
+        //echo json_encode($job);
+    //} catch(PDOException $e) {
+        //echo '{"error":{"text":'. $e->getMessage() .'}}';
+    //}
+//}
 ?>
