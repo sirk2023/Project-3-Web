@@ -25,7 +25,9 @@
                         echo $_SESSION['useruid']; 
                     ?><br> Your Email is: <?php
                         echo $_SESSION['useremail']; 
-                    ?><br> You Logged in succesfully! 
+                    ?><br> Your Role is: <?php
+                    echo $_SESSION['userstatus']; 
+                ?> 
                     </p>
                 </div>
             <div class="modal fade" id="myModal" role="dialog">
