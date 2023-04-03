@@ -37,7 +37,7 @@
                             <div class="modal-header">
                                 <!--Header Contents-->
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Token Details</h4>
+                                <h4 class="modal-title">Request Details</h4>
                             </div>
                             <div class="modal-body" id="contents">
                                 <!--Body Contents-->
@@ -54,19 +54,19 @@
                     <table id="table_id" class="display">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Token</th>
-                                <th>Network</th>
-                                <th>Utility</th>
-                                <th>Quantity</th>
-                                <th>Total Supply</th>
-                                <th>Description</th>
+                                <th>ID</th>
+                                <th>Client Name</th>
+                                <th>Email</th>
+                                <th>Number</th>
+                                <th>Company Name</th>
+                                <th>Client Address</th>
+                                <th>Additional Info</th>
                             </tr>
                     <tbody id="table_body">
                 </tbody>
             </table>
         </div>
-                <button id="addToken">Request Job</button>
+                <button class="btn btn-primary" id="addToken">Add Job</button>
             </div>
         </section>
 

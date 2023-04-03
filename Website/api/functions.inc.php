@@ -160,4 +160,20 @@ function getJob($id) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
 }
+
+// Calls the Get method from the rest API wallet by token
+//function findByToken($token) {
+	//$query = "SELECT * FROM wallet WHERE UPPER(token) LIKE ". '"%'.$token.'%"'." ORDER BY token";
+		//try {
+			//global $db;
+			//$wallets = $db->query($query);  
+			//$wallet = $wallets->fetch(PDO::FETCH_ASSOC);
+			//header("Content-Type: application/json", true);
+			//echo json_encode($wallet);
+		//} catch(PDOException $e) {
+			//echo '{"error":{"text":'. $e->getMessage() .'}}';
+		//}
+	//}
+
+
 ?>

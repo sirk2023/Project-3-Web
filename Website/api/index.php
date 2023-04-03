@@ -6,7 +6,7 @@ use Slim\Slim;
 \Slim\Slim::registerAutoloader();
 
 $app = new Slim();
-//  jobs Methods
+//  request_job Methods
 $app->get('/jobs', 'getJobs');
 $app->get('/jobs/:id',  'getJob');
 //$app->get('/jobs/search/:query', 'findByName');

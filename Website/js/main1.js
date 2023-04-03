@@ -1,5 +1,5 @@
 // The root URL for the RESTful services
-var rootURL = "http://localhost/Website003/api/jobs";
+var rootURL = "http://localhost/Website/api/jobs";
 
 // Map the on click events when dom loads along side of the Dom elements
 $(document).ready(function () {
@@ -49,11 +49,12 @@ var renderDetails = function (job) {
 		job.additional_Information + '<BR><HR>';
 	$("#contents").html(htmlStr);
 	$('#myModal').modal('show');
-	var htmlButtons = '<button type="button" class="btn btn-danger" data-dismiss="modal"' +
-		'id="delToken">Delete Request</button>' + '<button type="button" class="btn btn-warning"' +
+	var htmlButtons = '<button type="button" class="btn btn-default" data-dismiss="modal"' +
+		'id="delToken">Delete Request</button>' + '<button type="button" class="btn btn-default"' +
 		'id="edtToken">Edit Request</button>';
 		$("#modalFooter").html(htmlButtons);
 };
+
 
 //	Display the database elements in the modal
 var renderList = function (data) {
