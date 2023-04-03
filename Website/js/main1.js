@@ -170,3 +170,21 @@ var formToJSON=function () {
 	
 };
 
+//Calls the POST method of your rest API. Uses the formToJSON to format it for insert / Creates a new resource
+var addJob = function () {
+	console.log('AddJob');
+	$.ajax({
+		type: 'POST',
+		contentType: 'application/json',
+		url: rootURL,
+		dataType: "json",
+		data: formToJSON(),
+		success: function(data, textStatus, jqXHR){
+			alert('Token created successfully');
+            findAll();
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert('addJob error: ' + textStatus);
+		}
+	});
+};

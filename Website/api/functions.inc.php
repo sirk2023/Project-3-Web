@@ -174,6 +174,30 @@ function getJob($id) {
 			//echo '{"error":{"text":'. $e->getMessage() .'}}';
 		//}
 	//}
-
+function addJob() {
+    global $app;
+    $request = $app->request();
+    $job = json_decode($request->getBody());
+    $client_name = $job->client_name;
+    $client_email = $job->client_email;
+    $client_number = $job->client_number;
+    $company_name = $job->company_name;
+    $client_address = $job->client_address;
+    $additional_Information = $job->additional_Information;
+        
+    $query= "INSERT INTO request_job
+                (client_name, client_email, client_number, company_name, client_address, additional_Information)
+                VALUES
+                ('$client_name', '$client_email', '$client_number', '$company_name','$client_address', '$additional_Information')";
+    try {
+        global $conn;
+        $conn->exec($query);
+        $job->id = $conn->lastInsertId();
+        echo json_encode($job); 
+    } catch(PDOException $e) {
+         echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+    }
+}
+    
 
 ?>
