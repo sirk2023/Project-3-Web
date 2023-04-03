@@ -33,7 +33,7 @@ CREATE TABLE `request_job` (
   `client_number` 			int(45) 		DEFAULT NULL,
   `company_name` 			varchar(256) 		DEFAULT NULL,
   `client_address` 			varchar(256) 	DEFAULT NULL,
-  `additional Information` 	varchar(256) 	DEFAULT NULL,  
+  `additional_Information` 	varchar(256) 	DEFAULT NULL,  
   PRIMARY KEY (`job_id`)
 );
 

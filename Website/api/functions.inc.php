@@ -136,7 +136,7 @@ function loginUser($conn, $email, $pwd) {
 
 // ---------------- Jobs ----------------
 function getJobs() {
-	$query = "SELECT * FROM jobs ORDER BY job_id";
+	$query = "SELECT * FROM request_job ORDER BY job_id";
 	try {
 	global $conn;
 		$jobs = $conn->query($query);  
@@ -149,7 +149,7 @@ function getJobs() {
 }
 //Get job by ID
 function getJob($id) {
-	$query = "SELECT * FROM jobs WHERE job_id = '$id'";
+	$query = "SELECT * FROM request_job WHERE job_id = '$id'";
     try {
 		global $conn;
 		$jobs = $conn->query($query);

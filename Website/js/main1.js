@@ -1,7 +1,5 @@
 // The root URL for the RESTful services
-var rootURL = "http://localhost/myWalletApp/api/wallets";
-
-var currentToken
+var rootURL = "http://localhost/Website003/api/jobs";
 
 // Map the on click events when dom loads along side of the Dom elements
 $(document).ready(function () {
@@ -14,7 +12,7 @@ $(document).ready(function () {
 	$(document).on("click", '#edtToken', function() {updateModalTable();});
 	$(document).on("click", '#savetkn', function() {updateWallet();});
 });
-//	Find all Wallets 
+//	Find all Jobs
 var findAll = function () {
 	console.log('findAll');
 	$.ajax({
@@ -40,83 +38,46 @@ var findById = function (id) {
 };
 
 //	Populates the fields with the associated elements
-var renderDetails = function (wallet) {
+var renderDetails = function (job) {
 	var htmlStr = '<h2 id="currentId">' +
-		wallet.id + '</h2><h2>' +
-		wallet.name + '</h2><h2>' +
-		wallet.token + '</h2><h2>' +
-		wallet.network + '</h2><h2>' +
-		wallet.utility + '</h2><h2>' +
-		wallet.quantity + '</h2><h2>' +
-		wallet.totalSupply + '</h2><P>' +
-		wallet.description + '<BR><HR>';
+		job.job_id + '</h2><h2>' +
+		job.client_name + '</h2><h2>' +
+		job.client_email + '</h2><h2>' +
+		job.client_number + '</h2><h2>' +
+		job.company_name + '</h2><h2>' +
+		job.client_address + '</h2><h2>' +
+		job.additional_Information + '<BR><HR>';
 	$("#contents").html(htmlStr);
 	$('#myModal').modal('show');
-	var htmlButtons = '<button type="button" class="btn btn-default" data-dismiss="modal"' +
-		'id="delToken">Delete Token</button>' + '<button type="button" class="btn btn-default"' +
-		'id="edtToken">Edit Token</button>';
+	var htmlButtons = '<button type="button" class="btn btn-danger" data-dismiss="modal"' +
+		'id="delToken">Delete Request</button>' + '<button type="button" class="btn btn-warning"' +
+		'id="edtToken">Edit Request</button>';
 		$("#modalFooter").html(htmlButtons);
-};
-
-//Calls the POST method of your rest API. Uses the formToJSON to format it for insert / Creates a new resource
-var addWallet = function () {
-	console.log('AddWallet');
-	$.ajax({
-		type: 'POST',
-		contentType: 'application/json',
-		url: rootURL,
-		dataType: "json",
-		data: formToJSON(),
-		success: function(data, textStatus, jqXHR){
-			alert('Token created successfully');
-            findAll();
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert('addToken error: ' + textStatus);
-		}
-	});
-};
-
-//Calls the PUT method of your rest API. 
-var updateWallet = function () {
-	console.log('updateWallet');
-	$.ajax({
-		type: 'PUT',
-		contentType: 'application/json',
-		url: rootURL + '/' + $('#currentId').val(),
-		dataType: "json",
-		data: formToJSON(),
-		success: function(data, textStatus, jqXHR){
-			alert('Token updated successfully');
-                        findAll();
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert('updateToken error: ' + textStatus);
-		}
-	});
 };
 
 //	Display the database elements in the modal
 var renderList = function (data) {
-	list = data.wallet;
+	list = data.jobs;
 	console.log("response");
 	console.log(list);
 	$('#table_body tr').remove();
-	$.each(list, function (index, wallet) {
+	$.each(list, function (index, job) {
 		$('#table_body').append('<tr><td>' +
-			wallet.name + '</td><td>' +
-			wallet.token + '</td><td>' +
-			wallet.network + '</td><td>' +
-			wallet.utility + '</td><td>' +
-			wallet.quantity + '</td><td>' +
-			wallet.totalSupply + '</td><td  id="' +
-			wallet.id + '"><a href="#">More Info</a></td></tr>');
+		job.job_id + '</td><td>' +
+		job.client_name + '</td><td>' +
+		job.client_email + '</td><td>' +
+		job.client_number + '</td><td>' +
+		job.company_name + '</td><td>' +
+		job.client_address + '</td><td>' +
+		job.additional_Information + '</td><td  id="' +
+		job.job_id + '"><a href="#">More Info</a></td></tr>');
 	});
 	$('#table_id').DataTable();
 };
-// Create a new resouce
+
+// Create a new resouce -- Generation of the Modal For Destruction Form
 var modalTable = function () {
-	var htmlStr = '<h2>Add a new Token</h2>' +
+	var htmlStr = '<h2>Request Destruction</h2>' +
 	'<table id="addNewToken">' +
 	'<tr>' +
 		'<td>'+
@@ -128,7 +89,7 @@ var modalTable = function () {
 	'</tr>' +
 	'<tr>' +
 		'<td>'+
-			'<label>Token: </label>' +
+			'<label>Email: </label>' +
 		'</td>'+
 		'<td>'+
 			'<input type="text" id="token">' +
@@ -136,7 +97,7 @@ var modalTable = function () {
 	'</tr>' +
 	'<tr>' +
 		'<td>'+
-			'<label>Network: </label>' +
+			'<label>Phone Number: </label>' +
 		'</td>'+
 		'<td>'+
 			'<input type="text" id="network">' +
@@ -144,7 +105,7 @@ var modalTable = function () {
 	'</tr>' +
 	'<tr>' +
 		'<td>'+
-			'<label>Utility: </label>' +
+			'<label>Company Name: </label>' +
 		'</td>'+
 		'<td>'+
 			'<input type="text" id="utility">' +
@@ -152,7 +113,7 @@ var modalTable = function () {
 	'</tr>' +
 	'<tr>' +
 		'<td>'+
-			'<label>Quantity: </label>' +
+			'<label>Address: </label>' +
 		'</td>'+
 		'<td>'+
 			'<input type="text" id="quantity">' +
@@ -160,7 +121,7 @@ var modalTable = function () {
 	'</tr>' +
 	'<tr>' +
 		'<td>'+
-			'<label>Total Supply: </label>' +
+			'<label>Terms & Conditions: </label>' +
 		'</td>'+
 		'<td>'+
 			'<input type="text" id="totalSupply">' +
@@ -168,15 +129,7 @@ var modalTable = function () {
 	'</tr>' +
 	'<tr>' +
 		'<td>'+
-			'<label>Picture: </label>' +
-		'</td>'+
-		'<td>'+
-			'<input type="text" id="picture">' +
-		'</td>'+
-	'</tr>' +
-	'<tr>' +
-		'<td>'+
-			'<label>Description: </label>' +
+			'<label>Additional Info: </label>' +
 		'</td>'+
 		'<td>'+
 			'<input type="text" id="description">' +
@@ -190,122 +143,29 @@ var modalTable = function () {
 	$('#myModal').modal('show');
 };
 
-var updateModalTable = function () {
-	var htmlStr = '<h2>Edit a new Token</h2>' +
-	'<table id="editToken">' +
-	'<tr>' +
-		'<td>'+
-			'<label>Name: </label>' +
-		'</td>'+
-		'<td>'+
-			'<input type="text" id="name">' +
-		'</td>'+
-	'</tr>' +
-	'<tr>' +
-		'<td>'+
-			'<label>Token: </label>' +
-		'</td>'+
-		'<td>'+
-			'<input type="text" id="token">' +
-		'</td>'+
-	'</tr>' +
-	'<tr>' +
-		'<td>'+
-			'<label>Network: </label>' +
-		'</td>'+
-		'<td>'+
-			'<input type="text" id="network">' +
-		'</td>'+
-	'</tr>' +
-	'<tr>' +
-		'<td>'+
-			'<label>Utility: </label>' +
-		'</td>'+
-		'<td>'+
-			'<input type="text" id="utility">' +
-		'</td>'+
-	'</tr>' +
-	'<tr>' +
-		'<td>'+
-			'<label>Quantity: </label>' +
-		'</td>'+
-		'<td>'+
-			'<input type="text" id="quantity">' +
-		'</td>'+
-	'</tr>' +
-	'<tr>' +
-		'<td>'+
-			'<label>Total Supply: </label>' +
-		'</td>'+
-		'<td>'+
-			'<input type="text" id="totalSupply">' +
-		'</td>'+
-	'</tr>' +
-	'<tr>' +
-		'<td>'+
-			'<label>Picture: </label>' +
-		'</td>'+
-		'<td>'+
-			'<input type="text" id="picture">' +
-		'</td>'+
-	'</tr>' +
-	'<tr>' +
-		'<td>'+
-			'<label>Description: </label>' +
-		'</td>'+
-		'<td>'+
-			'<input type="text" id="description">' +
-		'</td>'+
-	'</tr>';
-	var htmlButtons = '<button type="button" class="btn btn-default" data-dismiss="modal"' +
-		'id="savetkn">Edit Token</button>"' +
-		'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-	$("#contents").html(htmlStr);
-	$("#modalFooter").html(htmlButtons);
-	$('#myModal').modal('show');
-};
 
 // Users Not needed
 
 // Helper function to serialize all the form fields into a JSON string
 var formToJSON=function () {
 	var string = JSON.stringify({
-		"name": $('#name').val(), 
-		"token": $('#token').val(),
-		"network": $('#network').val(),
-		"utility": $('#utility').val(),
-		"quantity": $('#quantity').val(),
-		"totalSupply": $('#totalSupply').val(),
-		"picture": $('#picture').val(),
-		"description": $('#description').val()
+		"client_name": $('#client_name').val(), 
+		"client_email": $('#client_email').val(),
+		"client_number": $('#client_number').val(),
+		"company_name": $('#company_name').val(),
+		"client_address": $('#client_address').val(),
+		"additional_Information": $('#additional_Information').val()
+		
 		});
 		//	Display the values within the Console Log
-		console.log($('#name').val())
-		console.log($('#token').val())
-		console.log($('#network').val())
-		console.log($('#utility').val())
-		console.log($('#quantity').val())
-		console.log($('#totalSupply').val())
-		console.log($('#picture').val())
-		console.log($('#description').val())
+		console.log($('#client_name').val())
+		console.log($('#client_email').val())
+		console.log($('#client_number').val())
+		console.log($('#company_name').val())
+		console.log($('#client_address').val())
+		console.log($('#additional_Information').val())
 	console.log(string);
 	return string;
+	
 };
-//	Remove a resource from the list
-var deleteToken = function (){
-	console.log("deleteToken");
-	console.log($('currentId').text())
-	console.log('You sold');
-	$.ajax({
-		type: 'DELETE',
-		contentType: 'application/json',
-		url: rootURL + '/' + $('currentId').text(),
-		success: function(data, textStatus, jqXHR){
-			alert('Token Removed Succesfully');
-			findAll();
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert('remove Token error: ' + textStatus);
-		}
-	})
-};
+

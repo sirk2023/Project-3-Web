@@ -25,17 +25,19 @@
                         echo $_SESSION['useruid']; 
                     ?><br> Your Email is: <?php
                         echo $_SESSION['useremail']; 
-                    ?><br> You Logged in succesfully! 
+                    ?><br> Your Role is: <?php
+                    echo $_SESSION['userstatus']; 
+                    ?> 
                     </p>
                 </div>
             <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
-                        <!-- Modal content-->
+                        <!-- Modal content Form Requst Destruction Table Generated In main2.JS File -->
                         <div class="modal-content">
                             <div class="modal-header">
                                 <!--Header Contents-->
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Token Details</h4>
+                                <h4 class="modal-title">Destruction Details</h4>
                             </div>
                             <div class="modal-body" id="contents">
                                 <!--Body Contents-->
