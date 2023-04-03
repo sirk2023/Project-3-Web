@@ -27,7 +27,7 @@
                         echo $_SESSION['useremail']; 
                     ?><br> Your Role is: <?php
                     echo $_SESSION['userstatus']; 
-                ?> 
+                    ?> 
                     </p>
                 </div>
             <div class="modal fade" id="myModal" role="dialog">
@@ -49,6 +49,23 @@
                         </div>
                     </div>
                 </div>
+                <p>Here is a list of Destruction Requests!</p>
+                <div class="tab-pane" id="products">
+                    <table id="table_id" class="display">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Token</th>
+                                <th>Network</th>
+                                <th>Utility</th>
+                                <th>Quantity</th>
+                                <th>Total Supply</th>
+                                <th>Description</th>
+                            </tr>
+                    <tbody id="table_body">
+                </tbody>
+            </table>
+        </div>
                 <button id="addToken">Request Job</button>
             </div>
         </section>
