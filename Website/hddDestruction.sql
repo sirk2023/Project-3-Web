@@ -94,10 +94,11 @@ CREATE TABLE `user_client` (
   `client_name` 	varchar(45)		DEFAULT NULL,
   `client_email` 	varchar(45) 	DEFAULT NULL,
   `client_uid` 		varchar(45) 	DEFAULT NULL,
+  `client_role` 	varchar(45) 	DEFAULT NULL,
   `client_pass` 	varchar(100) 	DEFAULT NULL,
   PRIMARY KEY (`client_id`)
 );
 INSERT INTO `user_client` VALUES
-(1, "Kyle",		"Kyle101@gmail.com",	"Kyle1",		"Pass"),
-(2, "Scot",		"Scot101@gmail.com",	"Scot2",		"Pass"),
-(3, "Stan",		"Stan183@gmail.com",	"Scot3",		"Pass");
+(1, "Kyle",		"Kyle101@gmail.com",	"Kyle1",	"admin",			PASSWORD("pass")),
+(2, "Scot",		"Scot101@gmail.com",	"Scot2",	"admin",			PASSWORD("pass")),
+(3, "Stan",		"Stan183@gmail.com",	"Scot3",	"admin",			PASSWORD("pass"));
