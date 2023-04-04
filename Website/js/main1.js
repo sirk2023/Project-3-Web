@@ -6,7 +6,7 @@ $(document).ready(function () {
 	findAll();
 	$(document).on("click", '#table_body td', function () { findById(this.id); });
 	$(document).on("click", '#addToken', function(){modalTable();});
-	$(document).on("click", '#addWallet', function(){addWallet();});
+	$(document).on("click", '#addJob', function(){addJob();});
 	$(document).on("click", '#delToken', function(){deleteToken();});
 	//Update the edtToken event handler
 	$(document).on("click", '#edtToken', function() {updateModalTable();});
@@ -64,7 +64,7 @@ var renderList = function (data) {
 	$('#table_body tr').remove();
 	$.each(list, function (index, job) {
 		$('#table_body').append('<tr><td>' +
-		job.job_id + '</td><td>' +
+
 		job.client_name + '</td><td>' +
 		job.client_email + '</td><td>' +
 		job.client_number + '</td><td>' +
@@ -85,7 +85,7 @@ var modalTable = function () {
 			'<label>Name: </label>' +
 		'</td>'+
 		'<td>'+
-			'<input type="text" id="name">' +
+			'<input type="text" id="client_name">' +
 		'</td>'+
 	'</tr>' +
 	'<tr>' +
@@ -93,7 +93,7 @@ var modalTable = function () {
 			'<label>Email: </label>' +
 		'</td>'+
 		'<td>'+
-			'<input type="text" id="token">' +
+			'<input type="text" id="client_email">' +
 		'</td>'+
 	'</tr>' +
 	'<tr>' +
@@ -101,7 +101,7 @@ var modalTable = function () {
 			'<label>Phone Number: </label>' +
 		'</td>'+
 		'<td>'+
-			'<input type="text" id="network">' +
+			'<input type="text" id="client_number">' +
 		'</td>'+
 	'</tr>' +
 	'<tr>' +
@@ -109,7 +109,7 @@ var modalTable = function () {
 			'<label>Company Name: </label>' +
 		'</td>'+
 		'<td>'+
-			'<input type="text" id="utility">' +
+			'<input type="text" id="company_name">' +
 		'</td>'+
 	'</tr>' +
 	'<tr>' +
@@ -117,7 +117,7 @@ var modalTable = function () {
 			'<label>Address: </label>' +
 		'</td>'+
 		'<td>'+
-			'<input type="text" id="quantity">' +
+			'<input type="text" id="client_address">' +
 		'</td>'+
 	'</tr>' +
 	'<tr>' +
@@ -125,7 +125,7 @@ var modalTable = function () {
 			'<label>Terms & Conditions: </label>' +
 		'</td>'+
 		'<td>'+
-			'<input type="text" id="totalSupply">' +
+			'<input type="text" id="terms_and_conditions">' +
 		'</td>'+
 	'</tr>' +
 	'<tr>' +
@@ -133,7 +133,7 @@ var modalTable = function () {
 			'<label>Additional Info: </label>' +
 		'</td>'+
 		'<td>'+
-			'<input type="text" id="description">' +
+			'<input type="text" id="additional_Information">' +
 		'</td>'+
 	'</tr>';
 	var htmlButtons = '<button type="button" class="btn btn-default" data-dismiss="modal"' +
@@ -145,46 +145,45 @@ var modalTable = function () {
 };
 
 
-// Users Not needed
+//Calls the POST method of your rest API. Uses the formToJSON to format it for insert / Creates a new resource
+var addJob = function () {
+    console.log('AddJob');
+    $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        url: rootURL,
+        dataType: "json",
+        data: formToJSON(),
+        success: function(data, textStatus, jqXHR){
+            console.log('addJob Success:', data)
+            alert('Token created successfully');
+            findAll();
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert('addToken error: ' + textStatus);
+        }
+    });
+};
 
 // Helper function to serialize all the form fields into a JSON string
 var formToJSON=function () {
-	var string = JSON.stringify({
-		"client_name": $('#client_name').val(), 
-		"client_email": $('#client_email').val(),
-		"client_number": $('#client_number').val(),
-		"company_name": $('#company_name').val(),
-		"client_address": $('#client_address').val(),
-		"additional_Information": $('#additional_Information').val()
-		
-		});
-		//	Display the values within the Console Log
-		console.log($('#client_name').val())
-		console.log($('#client_email').val())
-		console.log($('#client_number').val())
-		console.log($('#company_name').val())
-		console.log($('#client_address').val())
-		console.log($('#additional_Information').val())
-	console.log(string);
-	return string;
-	
-};
+    var string = JSON.stringify({
+        "client_name": $('#client_name').val(), 
+        "client_email": $('#client_email').val(),
+        "client_number": $('#client_number').val(),
+        "company_name": $('#company_name').val(),
+        "client_address": $('#client_address').val(),
+        "additional_Information": $('#additional_Information').val()
 
-//Calls the POST method of your rest API. Uses the formToJSON to format it for insert / Creates a new resource
-var addJob = function () {
-	console.log('AddJob');
-	$.ajax({
-		type: 'POST',
-		contentType: 'application/json',
-		url: rootURL,
-		dataType: "json",
-		data: formToJSON(),
-		success: function(data, textStatus, jqXHR){
-			alert('Token created successfully');
-            findAll();
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert('addJob error: ' + textStatus);
-		}
-	});
+        });
+        //    Display the values within the Console Log
+        console.log($('#client_name').val())
+        console.log($('#client_email').val())
+        console.log($('#client_number').val())
+        console.log($('#company_name').val())
+        console.log($('#client_address').val())
+        console.log($('#additional_Information').val())
+    console.log(string);
+    return string;
+
 };
