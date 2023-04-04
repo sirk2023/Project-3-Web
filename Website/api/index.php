@@ -9,10 +9,12 @@ $app = new Slim();
 //  request_job Methods
 $app->get('/jobs', 'getJobs');
 $app->get('/jobs/:id',  'getJob');
-//$app->get('/jobs/search/:query', 'findByName');
-//$app->post('/jobs', 'addJob');
+$app->get('/jobs/search/:query', 'findByName');
+$app->post('/jobs', 'addJob');
 //$app->delete('/jobs/:id',	'deleteJob');
 //$app->put('/jobs/:id', 'updateJob');
+
+
 
 //  User Methods
 //$app->get('/users', 'getUsers');

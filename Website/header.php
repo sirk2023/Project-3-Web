@@ -24,7 +24,7 @@ session_start();
         </div>
         <nav class="navbar navbar-inverse margin-control">
             <div class="container-fluid">
-                <?php if (!isset($_SESSION["useremail"])) {
+            <?php if (!isset($_SESSION["useremail"])) {
                     echo '<ul class="nav navbar-nav">';
                         echo '<li><a href="index.php">Home</a></li>';
                         echo '<li><a href="#">Page 1</a></li>';
@@ -39,26 +39,26 @@ session_start();
                         
                     }else if ($_SESSION["userstatus"] === "Client") { 
                         echo '<ul class="nav navbar-nav">';
-                            echo '<li><a href="index.php">Home</a></li>';
+                            echo '<li><a href="client_home.php">Home</a></li>';
                             echo '<li><a href="#">Client</a></li>';
                             echo '<li><a href="#">Page 2</a></li>';
                             echo '<li><a href="#">Page 3</a></li>';
                             echo '<li><a href="#">Page 4</a></li>';
                         echo '</ul>';
                         echo '<ul class="nav navbar-nav navbar-right">';
-                            echo '<li><a href="signup.php"><span class="glyphicon glyphicon-user"></span>Profile</a></li>';
+                            echo '<li><a href="client_profile.php"><span class="glyphicon glyphicon-user"></span>Profile</a></li>';
                             echo '<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span>Log Out</a></li>';
                         echo '</ul>';
                     }else if ($_SESSION["userstatus"] === "Admin") {
                         echo '<ul class="nav navbar-nav">';
-                            echo '<li><a href="index.php">Home</a></li>';
+                            echo '<li><a href="admin_home.php">Home</a></li>';
                             echo '<li><a href="#">Admin</a></li>';
                             echo '<li><a href="#">Page 2</a></li>';
                             echo '<li><a href="#">Page 3</a></li>';
                             echo '<li><a href="#">Page 4</a></li>';
                         echo '</ul>';
                         echo '<ul class="nav navbar-nav navbar-right">';
-                            echo '<li><a href="signup.php"><span class="glyphicon glyphicon-user"></span>Profile</a></li>';
+                            echo '<li><a href="admin_profile.php"><span class="glyphicon glyphicon-user"></span>Profile</a></li>';
                             echo '<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span>Log Out</a></li>';
                         echo '</ul>';
                     } ?> 

@@ -50,7 +50,7 @@
                     </div>
                 </div>
                <button id="addToken">Request Job</button>
-               <p>This is Client Profile</p>
+               <p>This is Client Home</p>
             </div>
         </section>
 

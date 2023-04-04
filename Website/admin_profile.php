@@ -49,24 +49,9 @@
                         </div>
                     </div>
                 </div>
-                <p>Here is a list of Destruction Requests!</p>
-                <div class="tab-pane" id="products">
-                    <table id="table_id" class="display">
-                        <thead>
-                            <tr>
-                                <th>Client Name</th>
-                                <th>Email</th>
-                                <th>Number</th>
-                                <th>Conpany Name</th>
-                                <th>Client Address</th>
-                                <th>Additional Information</th>
-                                <th></th>
-                            </tr>
-                    <tbody id="table_body">
-                </tbody>
-            </table>
-        </div>
+
                 <button class="btn btn-primary" id="addToken">Add Job</button>
+                <p>This is Admin Profile</p>
             </div>
         </section>
 
