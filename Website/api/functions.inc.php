@@ -162,18 +162,22 @@ function getJob($id) {
 }
 
 // Calls the Get method from the rest API wallet by token
-//function findByToken($token) {
-	//$query = "SELECT * FROM wallet WHERE UPPER(token) LIKE ". '"%'.$token.'%"'." ORDER BY token";
-		//try {
-			//global $db;
-			//$wallets = $db->query($query);  
-			//$wallet = $wallets->fetch(PDO::FETCH_ASSOC);
-			//header("Content-Type: application/json", true);
-			//echo json_encode($wallet);
-		//} catch(PDOException $e) {
-			//echo '{"error":{"text":'. $e->getMessage() .'}}';
-		//}
-	//}
+function findByName($client_name) {
+    $query = "SELECT * FROM request_job WHERE client_name LIKE :client_name ORDER BY client_name";
+        try {
+            global $conn;
+            $stmt = $conn->prepare($query);
+            $stmt->bindValue(':client_name', "%$client_name%", PDO::PARAM_STR);
+            $stmt->execute();
+            $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            header("Content-Type: application/json", true);
+            echo json_encode($jobs);
+        } catch(PDOException $e) {
+            echo '{"error":{"text":'. $e->getMessage() .'}}';
+        }
+    }
+// Add new Wallet
+
 function addJob() {
     global $app;
     $request = $app->request();
@@ -184,18 +188,25 @@ function addJob() {
     $company_name = $job->company_name;
     $client_address = $job->client_address;
     $additional_Information = $job->additional_Information;
-        
-    $query= "INSERT INTO request_job
-                (client_name, client_email, client_number, company_name, client_address, additional_Information)
-                VALUES
-                ('$client_name', '$client_email', '$client_number', '$company_name','$client_address', '$additional_Information')";
+
+    $query = "INSERT INTO request_job
+            (client_name, client_email, client_number, company_name, client_address, additional_Information)
+            VALUES
+            (:client_name, :client_email, :client_number, :company_name, :client_address, :additional_Information)";
     try {
         global $conn;
-        $conn->exec($query);
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':client_name', $client_name);
+        $stmt->bindParam(':client_email', $client_email);
+        $stmt->bindParam(':client_number', $client_number);
+        $stmt->bindParam(':company_name', $company_name);
+        $stmt->bindParam(':client_address', $client_address);
+        $stmt->bindParam(':additional_Information', $additional_Information);
+        $stmt->execute();
         $job->id = $conn->lastInsertId();
         echo json_encode($job); 
     } catch(PDOException $e) {
-         echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+        echo '{"error":{"text":'. $e->getMessage() .'}}'; 
     }
 }
     
