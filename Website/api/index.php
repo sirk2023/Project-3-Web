@@ -14,7 +14,8 @@ $app->post('/jobs', 'addJob');
 //$app->delete('/jobs/:id',	'deleteJob');
 //$app->put('/jobs/:id', 'updateJob');
 
-
+$app->get('/alljobs', 'getJobsA');
+$app->get('/alljobs/:id',  'getJobA');
 
 //  User Methods
 //$app->get('/users', 'getUsers');

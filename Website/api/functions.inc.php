@@ -209,7 +209,33 @@ function addJob() {
         echo '{"error":{"text":'. $e->getMessage() .'}}'; 
     }
 }
-    
+    // ---------------- View all Jobs ----------------
+function getJobsA() {
+    $query = "SELECT * FROM jobs ORDER BY job_id";
+    try {
+    global $conn;
+        $jobsA = $conn->query($query);
+        $jobsA = $jobsA->fetchAll(PDO::FETCH_ASSOC);
+        header("Content-Type: application/json", true);
+        echo '{"jobs": ' . json_encode($jobsA) . '}';
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+    }
+}
+
+//Get job by ID
+function getJobA($idA) {
+    $query = "SELECT * FROM jobs WHERE job_id = '$idA'";
+    try {
+        global $conn;
+        $jobsA = $conn->query($query);
+        $jobA = $jobsA->fetch(PDO::FETCH_ASSOC);
+        header("Content-Type: application/json", true);
+        echo json_encode($jobA);
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+}
 
 
 ?>
