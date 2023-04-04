@@ -55,19 +55,22 @@
                         <thead>
                             <tr>
                                 <th>Client Name</th>
-                                <th>Email</th>
-                                <th>Number</th>
-                                <th>Conpany Name</th>
-                                <th>Client Address</th>
-                                <th>Additional Information</th>
+                                <th>Date of Request</th>
+                                <th>Date of Collection</th>
+                                <th>Date of Destruction</th>
+                                <th>Certificate of Destruction</th>
+                                <th>Status</th>
+                                <th>Video Link</th>
+                                <th>Client Id</th>
+                                <th>CRM Link</th>
                                 <th></th>
                             </tr>
-                    <tbody id="table_body">
+                    <tbody id="table_bodyB">
                 </tbody>
             </table>
         </div>
                 <button class="btn btn-primary" id="addToken">Add Job</button>
-                <p>This is Admin Home</p>
+                <p>This is Admin View All</p>
             </div>
         </section>
 
