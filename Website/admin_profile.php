@@ -54,13 +54,13 @@
                     <table id="table_id" class="display">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Client Name</th>
                                 <th>Email</th>
                                 <th>Number</th>
-                                <th>Company Name</th>
+                                <th>Conpany Name</th>
                                 <th>Client Address</th>
-                                <th>Additional Info</th>
+                                <th>Additional Information</th>
+                                <th></th>
                             </tr>
                     <tbody id="table_body">
                 </tbody>
