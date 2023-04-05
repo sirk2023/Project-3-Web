@@ -90,6 +90,27 @@ function emptyInputLogin($uid, $pwd) {
     return $result;
 }
 
+# CREATE AN ADMIN USER
+function createAdmin($conn, $name, $email, $uid, $pwd) {
+    $sql = "INSERT INTO user_client (client_name, client_email, client_uid, client_role, client_pass) VALUES (:name, :email, :uid, :role, :pwd)";
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        header("location: ../signup.php?error=statementFailed");
+        exit();
+    }
+    // Set default role to admin
+    $role = "Admin";
+    // Hash the password into the Database 
+    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+    $stmt->execute(array(':name'=>$name, ':email'=>$email, ':uid'=>$uid, ':role'=>$role, ':pwd'=>$hashedPwd));
+    if ($stmt->rowCount() == 0) {
+        header("location: ../signup.php?error=insertFailed");
+        exit();
+    }
+    header("location: ../signup.php?error=none");
+    exit();
+}
+
 function loginUser($conn, $email, $pwd) {
     $uidExists = uidExists($conn, $email);
     if ($uidExists === false) {

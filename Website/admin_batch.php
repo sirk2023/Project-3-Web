@@ -54,15 +54,11 @@
                     <table id="table_id" class="display">
                         <thead>
                             <tr>
-                                <th>Client Name</th>
-                                <th>Date of Request</th>
-                                <th>Date of Collection</th>
+                                <th>Job ID</th>
+                                <th>Seal Barcode</th>
+                                <th>Date Of Collection</th>
                                 <th>Date of Destruction</th>
-                                <th>Certificate of Destruction</th>
                                 <th>Status</th>
-                                <th>Video Link</th>
-                                <th>Client Id</th>
-                                <th>CRM Link</th>
                                 <th></th>
                             </tr>
                     <tbody id="table_bodyC">

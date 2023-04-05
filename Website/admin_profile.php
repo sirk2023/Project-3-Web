@@ -7,11 +7,11 @@
             <div class="profile-left-panel">
                 <!--Side Panel navbar-->
                 <div class="sidenav">
+                    <a href="#">Update Profile</a>
                     <a href="#">Link</a>
                     <a href="#">Link</a>
-                    <a href="#">Link</a>
-                    <a href="#">Link</a>
-                    <a href="#">Link</a>
+                    <a href="#">View Users</a>
+                    <a href="admin_signup.php">Create Admin</a>
                 </div>
             </div>
             <div class="profile-right-panel">
@@ -19,16 +19,6 @@
                     <h1>Welcome Admin <?php
                         echo $_SESSION['username']; 
                     ?></h1>
-                    <p>Your ID is: <?php
-                        echo $_SESSION['userid']; 
-                    ?><br> Your Username is: <?php
-                        echo $_SESSION['useruid']; 
-                    ?><br> Your Email is: <?php
-                        echo $_SESSION['useremail']; 
-                    ?><br> Your Role is: <?php
-                    echo $_SESSION['userstatus']; 
-                    ?> 
-                    </p>
                 </div>
             <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
@@ -49,12 +39,73 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="container py-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="img-fluid mb-3 rounded-circle">
+                            <h4> <?php
+                                echo $_SESSION['username']; 
+                        ?></h4>
+                            <p>Your Role is: <?php
+                                echo $_SESSION['userstatus']; 
+                        ?> </p>
+                        </div>
+                        <div class="col-md-8">
+                            <h2>Profile Information</h2>
+                            <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h5>You'r ID</h5>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p><?php
+                                            echo $_SESSION['userid']; 
+                                        ?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h5>Username</h5>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p><?php
+                                            echo $_SESSION['useruid']; 
+                                        ?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h5>Email</h5>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p><?php
+                                            echo $_SESSION['useremail']; 
+                                    ?></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h5>Phone</h5>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p>[Can add if needed]</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h5>CRM</h5>
+                            </div>
+                            <div class="col-sm-9">
+                                <p><a href="[Your Website URL]">[Your Website URL]</a></p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                 <button class="btn btn-primary" id="addToken">Add Job</button>
                 <p>This is Admin Profile</p>
             </div>
         </section>
-
 <?php
     include_once 'footer.php';
 ?>
