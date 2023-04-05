@@ -14,8 +14,13 @@ $app->post('/jobs', 'addJob');
 //$app->delete('/jobs/:id',	'deleteJob');
 //$app->put('/jobs/:id', 'updateJob');
 
+// Job Table
 $app->get('/alljobs', 'getJobsA');
 $app->get('/alljobs/:id',  'getJobA');
+
+// Batch Table
+$app->get('/batchs', 'getbatchs');
+$app->get('/batchs/:id',  'getbatch');
 
 //  User Methods
 //$app->get('/users', 'getUsers');

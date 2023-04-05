@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <p>Here is a list of Destruction Requests!</p>
-                <div class="tab-pane" id="products">
+                <div id="products">
                     <table id="table_id" class="display">
                         <thead>
                             <tr>
@@ -65,12 +65,12 @@
                                 <th>CRM Link</th>
                                 <th></th>
                             </tr>
-                    <tbody id="table_bodyB">
+                    <tbody id="table_bodyC">
                 </tbody>
             </table>
         </div>
                 <button class="btn btn-primary" id="addToken">Add Job</button>
-                <p>This is Admin View All</p>
+                <p>This is Admin View all batch Page</p>
             </div>
         </section>
 

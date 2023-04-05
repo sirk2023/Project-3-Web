@@ -1,11 +1,13 @@
 // The root URL for the RESTful services
-var rootURL = "http://localhost/Website007/api/jobs";
-var allJobsURL = "http://localhost/Website007/api/alljobs";
+var rootURL = "http://localhost/Website/api/jobs";
+var allJobsURL = "http://localhost/Website/api/alljobs";
+var batchURL = "http://localhost/Website/api/batch";
 
 // Map the on click events when dom loads along side of the Dom elements
 $(document).ready(function () {
 	findAll();
 	findAllA();
+	findAllBatch();
 	$(document).on("click", '#table_body td', function () { findById(this.id); });
 	$(document).on("click", '#addToken', function () { modalTable(); });
 	$(document).on("click", '#addJob', function () { addJob(); });
@@ -188,7 +190,7 @@ var formToJSON = function () {
 	console.log(string);
 	return string;
 };
-//	Find all Jobs
+//	Find all Jobs TABLE
 var findAllA = function () {
 	console.log('findAllA');
 	$.ajax({
@@ -256,6 +258,71 @@ var renderListA = function (dataA) {
 			jobA.client_id + '</td><td>' +
 			jobA.crm_link + '</td><td  id="' +
 			jobA.job_id + '"><a href="#">More Info</a></td></tr>');
+	});
+	$('#table_id').DataTable();
+};
+
+//	Find All Batch Table
+var findAllBatch = function () {
+	console.log('findAllBatch');
+	$.ajax({
+		type: 'GET',
+		url: batchURL,
+		dataType: "json", // data type of response
+		success: renderListBatch,
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.log("AJAX error: " + textStatus + " - " + errorThrown);
+		}
+	});
+};
+// Find Token By ID
+var findByIdBatch = function (id) {
+	console.log('findByIdBatch: ' + id);
+	//alert("findbyidBatch");
+	$.ajax({
+		type: 'GET',
+		url: batchURL + '/' + id,
+		dataType: "json",
+		success: function (data) {
+			console.log('findByIdBatch success: ' + data.name);
+			renderDetailsBatch(data);
+		}
+	});
+};
+
+//	Populates the fields with the associated elements
+var renderDetailsBatch = function (batch) {
+	console.log(batch);
+	var htmlStr = '<h2 id="currentId">' +
+		batch.batch_id + '</h2><h2>' +
+		batch.job_id + '</h2><h2>' +
+		batch.seal_barcode + '</h2><h2>' +
+		batch.date_of_collection + '</h2><h2>' +
+		batch.date_of_destruction + '</h2><h2>' +
+		batch.status + '<BR><HR>';
+	$("#contents").html(htmlStr);
+	$('#myModal').modal('show');
+	var htmlButtons = '<button type="button" class="btn btn-default" data-dismiss="modal"' +
+		'id="delToken">Delete Request</button>' + '<button type="button" class="btn btn-default"' +
+		'id="edtToken">Edit Request</button>';
+	$("#modalFooter").html(htmlButtons);
+};
+
+
+//	Display the database elements in the modal
+var renderListBatch = function (dataB) {
+	listB = dataB.batchs;
+	console.log("response");
+	console.log(listB);
+	$('#table_bodyB tr').remove();
+	$.each(listB, function (index, batch) {
+		$('#table_bodyC').append('<tr><td>' +
+			batch.job_id + '</td><td>' +
+			batch.seal_barcode + '</td><td>' +
+			batch.date_of_collection + '</td><td>' +
+			batch.date_of_destruction + '</td><td>' +
+			batch.status + '</td><td  id="' +
+			batch.job_id + '"><a href="#">More Info</a></td></tr>');
 	});
 	$('#table_id').DataTable();
 };

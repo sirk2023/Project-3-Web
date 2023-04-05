@@ -9,9 +9,9 @@ DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE `jobs` (
   `job_id` 						int(11)			NOT NULL AUTO_INCREMENT,
   `client_name` 				varchar(45)		DEFAULT NULL,
-  `date_of_request` 			int(45) 		DEFAULT NULL,
-  `date_of_collection` 			int(45) 		DEFAULT NULL,
-  `date_of_destruction` 		int(45) 		DEFAULT NULL,
+  `date_of_request` 			date		DEFAULT NULL,
+  `date_of_collection` 			date 		DEFAULT NULL,
+  `date_of_destruction` 		date		DEFAULT NULL,
   `certificate_of_destruction` 	varchar(256) 	DEFAULT NULL,
   `status` 						varchar(256) 	DEFAULT NULL,
   `video_link` 					varchar(256) 	DEFAULT NULL,
@@ -21,9 +21,9 @@ CREATE TABLE `jobs` (
 );
 
 INSERT INTO `jobs` VALUES
-(1, "Kyle",		"08/02/2002",	"10/02/2002",		"12/02/2002",	"destructionlink",		"Complete",		"videolink", 	"accID",	"CRMlink"),
-(2, "Kyle",		"08/02/2002",	"10/02/2002",		"12/02/2002",	"destructionlink",		"Complete",		"videolink", 	"accID",	"CRMlink"),
-(3, "Kyle",		"08/02/2002",	"10/02/2002",		"12/02/2002",	"destructionlink",		"Complete",		"videolink", 	"accID",	"CRMlink");
+(1, "Kyle",		"2002-02-10",	"2002-03-10",		"2002-02-20",	"destructionlink",		"Complete",		"videolink", 	"accID",	"CRMlink"),
+(2, "Pepe",		"2002-02-11",	"2002-03-10",		"2002-02-20",	"destructionlink",		"Complete",		"videolink", 	"accID",	"CRMlink"),
+(3, "Lele",		"2002-02-12",	"2002-03-10",		"2002-02-20",	"destructionlink",		"Complete",		"videolink", 	"accID",	"CRMlink");
 
 DROP TABLE IF EXISTS `request_job`;
 CREATE TABLE `request_job` (
@@ -45,19 +45,19 @@ INSERT INTO `request_job` VALUES
 -- Table structure for table Barcode Related Stuff
 --
 
-CREATE TABLE `batches` (
+CREATE TABLE `batch_table` (
   `batch_id` 				int (11)		AUTO_INCREMENT NOT NULL,
   `job_id` 					int(11)			DEFAULT NULL,
   `seal_barcode`			int(45) 		DEFAULT NULL,
-  `date_of_collection`		int(11) 		DEFAULT NULL,
-  `date_of_destruction`		int(11) 		DEFAULT NULL,
-  `status`					int(11) 		DEFAULT NULL,
+  `date_of_collection`		date 		DEFAULT NULL,
+  `date_of_destruction`		date 		DEFAULT NULL,
+  `status`					varchar(256) 		DEFAULT NULL,
   PRIMARY KEY (`batch_id`)
 );
-INSERT INTO `batches` VALUES
-(1, "1",		"65451651",		 "10//02/2002",		"12/02/2002",	"Complete"),
-(2, "2",		"45616515",		 "10//02/2002",		"12/02/2002",	"Complete"),
-(3, "3",		"82848264",		 "10//02/2002",		"12/02/2002",	"Complete");
+INSERT INTO `batch_table` VALUES
+(1, "1",		"65451651",		 "2002-02-10",		"2002-02-10",	"Complete"),
+(2, "2",		"45616515",		 "2002-02-10",		"2002-02-10",	"Complete"),
+(3, "3",		"82848264",		 "2002-02-10",		"2002-02-10",	"Complete");
 
 
 CREATE TABLE `dummy` (

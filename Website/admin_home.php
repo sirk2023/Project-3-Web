@@ -9,7 +9,7 @@
                 <div class="sidenav">
                     <a href="admin_home.php">Requested Destructions</a>
                     <a href="admin_view_all_jobs.php">View all Jobs</a>
-                    <a href="#">Link</a>
+                    <a href="admin_batch.php">Batch</a>
                     <a href="#">Link</a>
                     <a href="#">Link</a>
                 </div>

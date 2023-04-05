@@ -236,6 +236,33 @@ function getJobA($idA) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
 }
+    // ---------------- Batch Table ----------------
+    function getBatchs() {
+        $query = "SELECT * FROM batch_table ORDER BY batch_id";
+        try {
+        global $conn;
+            $batchs = $conn->query($query);
+            $batchs = $batchs->fetchAll(PDO::FETCH_ASSOC);
+            header("Content-Type: application/json", true);
+            echo '{"jobs": ' . json_encode($batchs) . '}';
+        } catch(PDOException $e) {
+            echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+        }
+    }
+    
+    //Get job by ID
+    function getBatch($idB) {
+        $query = "SELECT * FROM batch_table WHERE batch_id = '$idB'";
+        try {
+            global $conn;
+            $batchs = $conn->query($query);
+            $batch = $batchs->fetch(PDO::FETCH_ASSOC);
+            header("Content-Type: application/json", true);
+            echo json_encode($batch);
+        } catch(PDOException $e) {
+            echo '{"error":{"text":'. $e->getMessage() .'}}';
+        }
+    }
 
 
 ?>
