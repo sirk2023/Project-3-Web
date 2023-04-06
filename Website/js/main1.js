@@ -9,6 +9,7 @@ $(document).ready(function () {
 	findAllA();
 	findAllBatch();
 	$(document).on("click", '#table_body td', function () { findById(this.id); });
+	$(document).on("click", '#table_bodyB td', function () { findByIdA(this.id); });
 	$(document).on("click", '#addToken', function () { modalTable(); });
 	$(document).on("click", '#addJob', function () { addJob(); });
 	$(document).on("click", '#delToken', function () { deleteToken(); });
@@ -206,17 +207,24 @@ var findByIdA = function (id) {
 
 //	Populates the fields with the associated elements
 var renderDetailsA = function (jobA) {
-	console.log(jobA);
-	var htmlStr = '<h2 id="currentId">' +
-		jobA.job_id + '</h2><h2>' +
-		jobA.client_name + '</h2><h2>' +
-		jobA.date_of_request + '</h2><h2>' +
-		jobA.date_of_collection + '</h2><h2>' +
-		jobA.date_of_destruction + '</h2><h2>' +
-		jobA.certificate_of_destruction + '</h2><h2>' +
-		jobA.status + '</h2><h2>' +
-		jobA.video_link + '</h2><h2>' +
-		jobA.crm_link + '<BR><HR>';
+	var htmlStr = '<div class="row"><div class="col-md-6"><strong>Job ID:</strong></div><div class="col-md-6">' +
+		jobA.job_id + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Client Name:</strong></div><div class="col-md-6">' +
+		jobA.client_name + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Date Of Request:</strong></div><div class="col-md-6">' +
+		jobA.date_of_request + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Date Of Collection:</strong></div><div class="col-md-6">' +
+		jobA.date_of_collection + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Date Of Destruction:</strong></div><div class="col-md-6">' +
+		jobA.date_of_destruction + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong> Certificate Of Destruction:</strong></div><div class="col-md-6">' +
+		jobA.certificate_of_destruction + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Status:</strong></div><div class="col-md-6">' +
+		jobA.status + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Video Link:</strong></div><div class="col-md-6">' +
+		jobA.video_link + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>CRM Link:</strong></div><div class="col-md-6">' +
+		jobA.crm_link + '</div></div><hr>';
 	$("#contents").html(htmlStr);
 	$('#myModal').modal('show');
 	var htmlButtons = '<button type="button" class="btn btn-default" data-dismiss="modal"' +
@@ -246,6 +254,53 @@ var renderListA = function (dataA) {
 			jobA.job_id + '"><a href="#">More Info</a></td></tr>');
 	});
 	$('#table_id').DataTable();
+};
+
+var modalTableA = function () {
+	var htmlStr = '<div class="modal-header">' +
+		'<h2 class="modal-title">Request Destruction</h2>' +
+		'<button type="button" class="close" data-dismiss="modal">&times;</button>' +
+		'</div>' +
+		'<div class="modal-body">' +
+		'<form>' +
+		'<div class="form-group">' +
+		'<label for="client_name">Name:</label>' +
+		'<input type="text" class="form-control" id="client_name">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="client_email">Email:</label>' +
+		'<input type="text" class="form-control" id="client_email">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="client_number">Phone Number:</label>' +
+		'<input type="text" class="form-control" id="client_number">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="company_name">Company Name:</label>' +
+		'<input type="text" class="form-control" id="company_name">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="client_address">Address:</label>' +
+		'<input type="text" class="form-control" id="client_address">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="terms_and_conditions">Terms &amp; Conditions:</label>' +
+		'<input type="text" class="form-control" id="terms_and_conditions">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="additional_Information">Additional Info:</label>' +
+		'<textarea class="form-control" id="additional_Information" rows="5"></textarea>' +
+		'</div>' +
+		'</form>' +
+		'</div>';
+
+	var htmlButtons = '<div class="modal-footer">' +
+		'<button type="button" class="btn btn-primary" id="addJob">Request Destruction</button>' +
+		'<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+		'</div>';
+
+	$("#myModal .modal-content").html(htmlStr + htmlButtons);
+	$('#myModal').modal('show');
 };
 
 //	Find All Batch Table
