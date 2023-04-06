@@ -1,7 +1,7 @@
 // The root URL for the RESTful services
 var rootURL = "http://localhost/Website/api/jobs";
 var allJobsURL = "http://localhost/Website/api/alljobs";
-var batchURL = "http://localhost/Website/api/batch";
+var batchURL = "http://localhost/Website/api/batchs";
 
 // Map the on click events when dom loads along side of the Dom elements
 $(document).ready(function () {
@@ -184,10 +184,7 @@ var findAllA = function () {
 		type: 'GET',
 		url: allJobsURL,
 		dataType: "json", // data type of response
-		success: renderListA,
-		error: function (jqXHR, textStatus, errorThrown) {
-			console.log("AJAX error: " + textStatus + " - " + errorThrown);
-		}
+		success: renderListA
 	});
 };
 // Find Token By ID
@@ -310,10 +307,7 @@ var findAllBatch = function () {
 		type: 'GET',
 		url: batchURL,
 		dataType: "json", // data type of response
-		success: renderListBatch,
-		error: function (jqXHR, textStatus, errorThrown) {
-			console.log("AJAX error: " + textStatus + " - " + errorThrown);
-		}
+		success: renderListBatch
 	});
 };
 // Find Token By ID
