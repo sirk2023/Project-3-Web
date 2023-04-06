@@ -43,14 +43,20 @@ var findById = function (id) {
 
 //	Populates the fields with the associated elements
 var renderDetails = function (job) {
-	var htmlStr = '<h2 id="currentId">' +
-		job.job_id + '</h2><h2>' +
-		job.client_name + '</h2><h2>' +
-		job.client_email + '</h2><h2>' +
-		job.client_number + '</h2><h2>' +
-		job.company_name + '</h2><h2>' +
-		job.client_address + '</h2><h2>' +
-		job.additional_Information + '<BR><HR>';
+	var htmlStr = '<div class="row"><div class="col-md-6"><strong>Job ID:</strong></div><div class="col-md-6">' +
+		job.job_id + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Client Name:</strong></div><div class="col-md-6">' +
+		job.client_name + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Client Email:</strong></div><div class="col-md-6">' +
+		job.client_email + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Client Number:</strong></div><div class="col-md-6">' +
+		job.client_number + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Company Name:</strong></div><div class="col-md-6">' +
+		job.company_name + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Client Address:</strong></div><div class="col-md-6">' +
+		job.client_address + '</div></div>' +
+		'<div class="row"><div class="col-md-6"><strong>Additional Information:</strong></div><div class="col-md-6">' +
+		job.additional_Information + '</div></div><hr>';
 	$("#contents").html(htmlStr);
 	$('#myModal').modal('show');
 	var htmlButtons = '<button type="button" class="btn btn-default" data-dismiss="modal"' +
@@ -82,69 +88,49 @@ var renderList = function (data) {
 
 // Create a new resouce -- Generation of the Modal For Destruction Form
 var modalTable = function () {
-	var htmlStr = '<h2>Request Destruction</h2>' +
-		'<table id="addNewToken">' +
-		'<tr>' +
-		'<td>' +
-		'<label>Name: </label>' +
-		'</td>' +
-		'<td>' +
-		'<input type="text" id="client_name">' +
-		'</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>' +
-		'<label>Email: </label>' +
-		'</td>' +
-		'<td>' +
-		'<input type="text" id="client_email">' +
-		'</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>' +
-		'<label>Phone Number: </label>' +
-		'</td>' +
-		'<td>' +
-		'<input type="text" id="client_number">' +
-		'</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>' +
-		'<label>Company Name: </label>' +
-		'</td>' +
-		'<td>' +
-		'<input type="text" id="company_name">' +
-		'</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>' +
-		'<label>Address: </label>' +
-		'</td>' +
-		'<td>' +
-		'<input type="text" id="client_address">' +
-		'</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>' +
-		'<label>Terms & Conditions: </label>' +
-		'</td>' +
-		'<td>' +
-		'<input type="text" id="terms_and_conditions">' +
-		'</td>' +
-		'</tr>' +
-		'<tr>' +
-		'<td>' +
-		'<label>Additional Info: </label>' +
-		'</td>' +
-		'<td>' +
-		'<input type="text" id="additional_Information">' +
-		'</td>' +
-		'</tr>';
-	var htmlButtons = '<button type="button" class="btn btn-default" data-dismiss="modal"' +
-		'id="addJob">Request Destruction</button>' +
-		'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-	$("#contents").html(htmlStr);
-	$("#modalFooter").html(htmlButtons);
+	var htmlStr = '<div class="modal-header">' +
+		'<h2 class="modal-title">Request Destruction</h2>' +
+		'<button type="button" class="close" data-dismiss="modal">&times;</button>' +
+		'</div>' +
+		'<div class="modal-body">' +
+		'<form>' +
+		'<div class="form-group">' +
+		'<label for="client_name">Name:</label>' +
+		'<input type="text" class="form-control" id="client_name">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="client_email">Email:</label>' +
+		'<input type="text" class="form-control" id="client_email">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="client_number">Phone Number:</label>' +
+		'<input type="text" class="form-control" id="client_number">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="company_name">Company Name:</label>' +
+		'<input type="text" class="form-control" id="company_name">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="client_address">Address:</label>' +
+		'<input type="text" class="form-control" id="client_address">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="terms_and_conditions">Terms &amp; Conditions:</label>' +
+		'<input type="text" class="form-control" id="terms_and_conditions">' +
+		'</div>' +
+		'<div class="form-group">' +
+		'<label for="additional_Information">Additional Info:</label>' +
+		'<textarea class="form-control" id="additional_Information" rows="5"></textarea>' +
+		'</div>' +
+		'</form>' +
+		'</div>';
+
+	var htmlButtons = '<div class="modal-footer">' +
+		'<button type="button" class="btn btn-primary" id="addJob">Request Destruction</button>' +
+		'<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+		'</div>';
+
+	$("#myModal .modal-content").html(htmlStr + htmlButtons);
 	$('#myModal').modal('show');
 };
 

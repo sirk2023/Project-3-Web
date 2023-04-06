@@ -63,7 +63,7 @@
     width: 80%;
     height: 100vh;
     /* set the height to the full viewport height */
-    background-color: #9bb19c;
+    background-color: #c7cfc3;
     /* change this to your desired background color */
 }
 
@@ -92,4 +92,43 @@
 .content {
     margin-left: 200px;
     padding-left: 20px;
+}
+
+.modal-body label {
+    display: inline-block;
+    width: 100px;
+    margin-right: 10px;
+}
+
+input[type="search"] {
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: grey;
+}
+
+.dataTables_length {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.dataTables_length select {
+    margin-left: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    background-color: grey;
+}
+
+#table_id thead {
+    background-color: #f2f2f2;
+}
+
+#table_id th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #ddd;
 }
