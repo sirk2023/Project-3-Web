@@ -24,8 +24,8 @@ INSERT INTO `user_table` VALUES
 -- Table structure for table `customers`
 --
 
-DROP TABLE IF EXISTS `customers`;
-CREATE TABLE `customers` (
+DROP TABLE IF EXISTS `customer_table`;
+CREATE TABLE `customer_table` (
   `customer_id`   int(11)       NOT NULL AUTO_INCREMENT,
   `customer_name` varchar(256)  DEFAULT NULL,
   `customer_email` varchar(256) DEFAULT NULL,
@@ -33,11 +33,11 @@ CREATE TABLE `customers` (
   `accounts_link`   varchar(100)  DEFAULT NULL,
   `crm_link`        varchar(100)  DEFAULT NULL,
   `user_id`         int(11)      NOT NULL,
-  PRIMARY KEY (`customer_id`),
-  FOREIGN KEY (`user_id`) REFERENCES `user_table` (`user_id`)
+  PRIMARY KEY (`customer_id`)
+  -- FOREIGN KEY (`user_id`) REFERENCES `user_table` (`user_id`)
 );
 
-INSERT INTO `customers` VALUES
+INSERT INTO `customer_table` VALUES
 (1, "Kyle",    "John@gmail.com",    "0871234567",  "Payment Link",   "CRM Managment",1),
 (2, "Scot",    "Jane@gmail.com",    "1234567890",  "Payment Link",   "CRM Managment",2),
 (3, "Stan",   "Alice@gmail.com",   "9876543215",  "Payment Link",   "CRM Managment",3);
@@ -55,9 +55,9 @@ CREATE TABLE `request_job` (
   `user_phone`      		varchar(50)   	DEFAULT NULL,
   `user_address`         	varchar(256)     DEFAULT NULL,
   `additional_information` 	varchar(256)     DEFAULT NULL,
-  PRIMARY KEY (`request_id`),
-  FOREIGN KEY (`user_id`) REFERENCES `user_table`(`user_id`),
-  FOREIGN KEY (`customer_id`) REFERENCES `customers`(`customer_id`)
+  PRIMARY KEY (`request_id`)
+ -- FOREIGN KEY (`user_id`) REFERENCES `user_table`(`user_id`)
+ -- FOREIGN KEY (`customer_id`) REFERENCES `customer_table`(`customer_id`)
 );
 
 INSERT INTO `request_job` VALUES
@@ -76,8 +76,8 @@ CREATE TABLE `accepted_jobs` (
   `job_number` 					varchar(100) 		NOT NULL,
   `job_status` 					varchar(45) 		DEFAULT NULL,
   `job_creation_date` 			datetime 			DEFAULT NULL,
-  PRIMARY KEY (`job_id`),
-  FOREIGN KEY (`customer_id`) REFERENCES `customers`(`customer_id`)
+  PRIMARY KEY (`job_id`)
+  -- FOREIGN KEY (`customer_id`) REFERENCES `customer_table`(`customer_id`)
 );
 
 INSERT INTO `accepted_jobs` VALUES
@@ -95,9 +95,9 @@ CREATE TABLE `signature_table` (
 `job_id` 					int(11) 		NOT NULL,
 `customer_id` 				int(11) 		NOT NULL,
 `signature_date` 			datetime 		DEFAULT NULL,
-PRIMARY KEY (`signature_id`),
-FOREIGN KEY (`job_id`) REFERENCES `accepted_jobs`(`job_id`),
-FOREIGN KEY (`customer_id`) REFERENCES `Customers`(`customer_id`)
+PRIMARY KEY (`signature_id`)
+-- FOREIGN KEY (`job_id`) REFERENCES `accepted_jobs`(`job_id`),
+-- FOREIGN KEY (`customer_id`) REFERENCES `customer_table`(`customer_id`)
 );
 INSERT INTO `signature_table` VALUES
 (1, 1,	1,	"2023-03-03"),
@@ -114,8 +114,8 @@ CREATE TABLE `batch_table` (
   `batch_number`			varchar(100) 	DEFAULT NULL,
   `seal_barcode_number`		varchar(100) 	DEFAULT NULL,
   `batch_creation_date`		datetime 		DEFAULT NULL,
-  PRIMARY KEY (`batch_id`),
-  FOREIGN KEY (`job_id`) REFERENCES `accepted_jobs`(`job_id`)
+  PRIMARY KEY (`batch_id`)
+  -- FOREIGN KEY (`job_id`) REFERENCES `accepted_jobs`(`job_id`)
 );
 
 INSERT INTO `batch_table` VALUES
@@ -134,9 +134,9 @@ CREATE TABLE `collected_harddrives` (
 	`batch_id`						int(11) 		NOT NULL,
 	`signed_by_customer` 			VARCHAR(100)	DEFAULT NULL,
 	`signed_date` 					date 			DEFAULT NULL,
-  PRIMARY KEY (`collected_harddrives_id`),
-  UNIQUE KEY (`hdd_serial_number`),
-  FOREIGN KEY (`batch_id`) REFERENCES `batch_table`(`batch_id`)
+  PRIMARY KEY (`collected_harddrives_id`)
+  -- UNIQUE KEY (`hdd_serial_number`),
+  -- FOREIGN KEY (`batch_id`) REFERENCES `batch_table`(`batch_id`)
 );
 INSERT INTO `collected_harddrives` VALUES
 (1, "4156465",		1,	"Yes",	"2023-03-03"),
@@ -154,10 +154,10 @@ CREATE TABLE `video_file_table` (
 `hdd_serial_number` 	varchar(100) 	NOT NULL,
 `capture_date` 			datetime 		DEFAULT NULL,
 `file_link` 			varchar(100) 	DEFAULT NULL,
-PRIMARY KEY (`video_id`),
-FOREIGN KEY (`job_id`) REFERENCES `accepted_jobs`(`job_id`),
-FOREIGN KEY (`batch_id`) REFERENCES `batch_table`(`batch_id`),
-FOREIGN KEY (`hdd_serial_number`) REFERENCES `collected_harddrives`(`hdd_serial_number`)
+PRIMARY KEY (`video_id`)
+-- FOREIGN KEY (`job_id`) REFERENCES `accepted_jobs`(`job_id`),
+-- FOREIGN KEY (`batch_id`) REFERENCES `batch_table`(`batch_id`),
+-- FOREIGN KEY (`hdd_serial_number`) REFERENCES `collected_harddrives`(`hdd_serial_number`)
 );
 INSERT INTO `video_file_table` VALUES
 (1,1,1, "4156465","2023-03-15","Link"),
@@ -172,19 +172,20 @@ INSERT INTO `video_file_table` VALUES
 DROP TABLE IF EXISTS `completed_jobs`;
 CREATE TABLE `completed_jobs` (
   `job_id` 						int(11)			NOT NULL AUTO_INCREMENT,
-  `client_name` 				varchar(45)		DEFAULT NULL,
+  `customer_name` 				varchar(45)		DEFAULT NULL,
   `date_of_request` 			date 			DEFAULT NULL,
   `date_of_collection` 			date 			DEFAULT NULL,
   `date_of_destruction` 		date 			DEFAULT NULL,
   `certificate_of_destruction` 	varchar(256) 	DEFAULT NULL,
   `status` 						varchar(256) 	DEFAULT NULL,
   `video_link` 					varchar(256) 	DEFAULT NULL,
-  `client_id` 					int(45) 		DEFAULT NULL,
+  `customer_id` 				int(45) 		DEFAULT NULL,
   `crm_link` 					varchar(256) 	DEFAULT NULL,
   PRIMARY KEY (`job_id`)
+  -- FOREIGN KEY (`customer_id`) REFERENCES `customer_table`(`customer_id`)
 );
 
 INSERT INTO `completed_jobs` VALUES
-(1, "Kyle",		"2002-02-10",	"2002-02-10",		"2002-02-10",	"destructionlink",		"Complete",		"videolink", 	"accID",	"CRMlink"),
-(2, "Kyle",		"2002-02-10",	"2002-02-10",		"2002-02-10",	"destructionlink",		"Complete",		"videolink", 	"accID",	"CRMlink"),
-(3, "Kyle",		"2002-02-10",	"2002-02-10",		"2002-02-10",	"destructionlink",		"Complete",		"videolink", 	"accID",	"CRMlink");
+(1, "Kyle",		"2002-02-10",	"2002-02-10",		"2002-02-10",	"destructionlink",		"Complete",		"videolink", 	1,	"CRMlink"),
+(2, "Kyle",		"2002-02-10",	"2002-02-10",		"2002-02-10",	"destructionlink",		"Complete",		"videolink", 	2,	"CRMlink"),
+(3, "Kyle",		"2002-02-10",	"2002-02-10",		"2002-02-10",	"destructionlink",		"Complete",		"videolink", 	3,	"CRMlink");
